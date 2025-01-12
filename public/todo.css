@@ -1,0 +1,135 @@
+.main{
+    display: flex;
+    justify-content: center; 
+    height: 100vh; 
+    margin: 0; 
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between the items */
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #2a20ea; /* Navbar background color */
+   
+}
+
+.logout-box {
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.logout-box h1 {
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1; /* Makes the buttons section take equal space */
+    justify-content: flex-end;
+}
+
+#back-to-home, #Logoutbtn {
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#Logoutbtn {
+    background-color: #f44336; /* Red background for Logout button */
+}
+
+#back-to-home:hover, #Logoutbtn:hover {
+    opacity: 0.8; /* Hover effect */
+}
+
+.welcome {
+    font-weight: bold;
+}
+
+
+/* Todos Section */
+.todo-container {
+    margin-top: 40px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+}
+
+.todo-container h1 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #333;
+}
+
+.todo-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.todo-form input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.todo-form button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.todo-form button:hover {
+    background-color: #218838;
+}
+
+/* Todo List */
+.todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.todo-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.todo-list li:last-child {
+    border-bottom: none;
+}
+
+/* Status Styles */
+.completed {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.pending {
+    color: #dc3545;
+    font-weight: bold;
+}

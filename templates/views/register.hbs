@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>resiter</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+    <div class="cover">
+        
+        
+        
+
+        <div class="navbar">
+            <h3>
+                <b>
+                   w3villa
+                </b></h3>
+           <button type="button" class="login" id="log"><b>LOGIN</b></button>
+
+            
+        
+        </div>
+        <div class="image">
+            <h2>Register New Account</h2>
+
+
+<div class="outer">
+   
+            <form action="/register" method="post">
+
+                <div class="inner">
+                    <div class="input">
+                        <input class="enter" type="text" placeholder="Name" name="name">
+                    </div>
+    
+                    <div class="input">
+                        <input class="enter" type="contact" placeholder="Contact No." name="contact">
+                    </div>
+    
+    
+                    <div class="input">
+                        <input class="enter" type="number" placeholder="PRN" name="prn">
+                    </div>
+                    <div class="input">
+                        <input class="enter" type="text" placeholder="Password" name="password" required>
+                    </div>
+                </div>
+
+                <div class="inner2">
+                    <div class="input">
+                        <input class="enter" type="text" placeholder="Branch" name="branch">
+                    </div>
+    
+                   
+                    <div class="input">
+                        <input class="enter" type="email" placeholder="Email" name="email">
+                    </div>
+                    
+                    <div class="input">
+                        <input class="enter" type="text" placeholder="Confirm Password" name="confirmPassword" required>
+                    </div>
+                </div>
+                <button class="register"><b>REGISTER</b></button>
+                <div class="logp">
+                    <p>Already have an account,then <a href="/login">Login</a></p>
+                </div>
+            </form>
+        </div>  
+        </div>
+    </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check if the login button and back button exist in the DOM
+        const lgButton = document.getElementById('log');
+        const backButton = document.getElementById('btn');  // Make sure 'btn' id is assigned to the back button
+
+        // Check if lgButton exists before adding event listener
+        if (lgButton) {
+            lgButton.addEventListener('click', function() {
+                window.location.href = '/login';  // Redirect to login page
+            });
+        }
+
+        // Check if backButton exists before adding event listener
+        if (backButton) {
+            backButton.addEventListener('click', function() {
+                window.location.href = '/';  // Redirect to home page
+            });
+        }
+    });
+</script>
+
+</script>
+</body>
+</html>

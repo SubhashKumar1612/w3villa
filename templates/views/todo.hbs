@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="todo.css">
+</head>
+<body>
+     <div class="container">
+        <div class="logout-box">
+            <h1>Hello, {{userName}}!</h1>
+            <div class="buttons">
+                <button id="back-to-home" type="button">Back to Home</button>
+                <button id="Logoutbtn" class="welcome" type="button">Logout</button>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+
+    <div class="todo-container">
+        <h1>Your Todos</h1>
+
+        <!-- Todo Form -->
+        <form action="/todo" method="POST" class="todo-form">
+            <input type="text" name="title" placeholder="Add a new todo" required />
+            <button type="submit">Add Todo</button>
+        </form>
+
+        <!-- Todo List -->
+        <ul class="todo-list">
+            {{#each todos}}
+            <li id="todo-{{this._id}}">
+                <span class="todo-title" id="todo-title-{{this._id}}">{{{this.title}}}</span> - 
+                <button class="edit-btn" data-id="{{this._id}}">Edit</button>
+                <button class="delete-btn" data-id="{{this._id}}">Delete</button>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+    </div>
+
+    <script>
+
+ document.getElementById('back-to-home').addEventListener('click', function() {
+            window.location.href = '/'; // Navigate to home page
+        });
+
+        document.getElementById('Logoutbtn').addEventListener('click', function() {
+            window.location.href = '/logout'; // Navigate to logout
+        });
+        document.addEventListener("DOMContentLoaded", () => {
+            // Add event listeners for Edit and Delete buttons
+            const editButtons = document.querySelectorAll(".edit-btn");
+            const deleteButtons = document.querySelectorAll(".delete-btn");
+
+            editButtons.forEach(button => {
+                button.addEventListener("click", (event) => {
+                    const todoId = event.target.dataset.id;
+                    startEditing(todoId);
+                });
+            });
+
+            deleteButtons.forEach(button => {
+                button.addEventListener("click", (event) => {
+                    const todoId = event.target.dataset.id;
+                    deleteTodo(todoId);
+                });
+            });
+        });
+        // Start editing a todo
+function startEditing(id) {
+    // Get the current todo title
+    const todoTitleElement = document.getElementById(`todo-title-${id}`);
+    const currentTitle = todoTitleElement.textContent;
+
+    // Replace the title with an input field for editing
+    todoTitleElement.innerHTML = `
+        <input type="text" id="edit-input-${id}" value="${currentTitle}" />
+        <button id="save-btn-${id}">Save</button>
+        <button id="cancel-btn-${id}">Cancel</button>
+    `;
+
+    // Add event listeners for Save and Cancel buttons
+    document.getElementById(`save-btn-${id}`).addEventListener("click", () => saveEdit(id));
+    document.getElementById(`cancel-btn-${id}`).addEventListener("click", () => cancelEdit(id, currentTitle));
+}
+
+// Save the edited todo
+function saveEdit(id) {
+    const editInput = document.getElementById(`edit-input-${id}`);
+    const newTitle = editInput.value.trim();
+
+    if (newTitle === "") {
+        alert("Todo title cannot be empty!");
+        return;
+    }
+
+    // Send the updated title to the server
+    fetch(`/todo/edit/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ title: newTitle }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Update the DOM with the new title
+                const todoTitleElement = document.getElementById(`todo-title-${id}`);
+                todoTitleElement.textContent = newTitle;
+                
+               
+            } else {
+                alert("Failed to update the todo.");
+            }
+        })
+        .catch(error => console.error("Error updating todo:", error));
+}
+
+// Cancel editing
+function cancelEdit(id, originalTitle) {
+    const todoTitleElement = document.getElementById(`todo-title-${id}`);
+    todoTitleElement.textContent = originalTitle;
+}
+
+       
+        // Delete a todo
+        function deleteTodo(id) {
+            if (confirm("Are you sure you want to delete this todo?")) {
+                fetch(`/todo/${id}`, {
+                    method: 'DELETE',
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Remove the todo item from the DOM directly
+                        const todoItem = document.getElementById(`todo-${id}`);
+                        if (todoItem) {
+                            todoItem.remove();
+                        }
+                    } else {
+                        alert("Failed to delete the todo.");
+                    }
+                })
+                .catch(error => console.error("Error deleting todo:", error));
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+
+/* login.css */
+
+body {
+    font-family: 'K2D', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #3f51b5;
+    color: white;
+}
+
+.logo-header #HMS-header {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+header .buttons button {
+    background-color: #ff5722;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+header .buttons button:hover {
+    background-color: #e64a19;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 70px); /* Adjust height to exclude header */
+}
+
+.login-container {
+    background: #ffffff;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 400px;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.login-container .head img {
+    width: 80px;
+    margin-bottom: 20px;
+}
+
+.login-container .head h2 {
+    font-size: 1.8rem;
+    margin: 10px 0;
+    color: #333;
+}
+
+.login-container .head p {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.input-form form input[type="text"],
+.input-form form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.input-form form input:focus {
+    border-color: #3f51b5;
+    outline: none;
+    box-shadow: 0 0 5px rgba(63, 81, 181, 0.5);
+}
+
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    margin: 10px 0;
+    color: #555;
+}
+
+.remember-forgot a {
+    color: #3f51b5;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+.submit input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.submit input[type="submit"]:hover {
+    background-color: #303f9f;
+}
+
+.submit p {
+    margin: 15px 0 0;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.submit a {
+    color: #3f51b5;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.submit a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        width: 90%;
+    }
+}

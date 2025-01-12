@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout Page</title>
+    <link rel="stylesheet" href="logout.css">
+    <style>
+        .main{
+             margin: 0; /* Remove default margin */
+    height: 100vh; /* Ensure the body takes full height of the viewport */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-color: #f4f4f4;
+        }
+       .todo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Make the container fill the height of the viewport */
+    padding: 20px;
+    background-color: #f4f4f4; /* Light background color for contrast */
+}
+
+#todo {
+    width: 80%; /* Adjust width to 80% of the parent container */
+    max-width: 500px; /* Set a max-width to prevent the box from becoming too large */
+    height: 150px; /* Set a fixed height for consistency */
+    border: 3px solid #333; /* Border color and thickness */
+    border-radius: 10px; /* Rounded corners for a softer look */
+    background-color: #00bcd4; /* A more vibrant background color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Center-align the text */
+    padding: 15px; /* Add padding inside the box for spacing */
+    color: #fff; /* White text color for contrast */
+    font-family: Arial, sans-serif; /* Clean font for readability */
+    font-size: 1.1em; /* Slightly larger text for better readability */
+}
+
+#todo:hover {
+    background-color: #00acc1; /* Darken the background color slightly on hover */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transform: scale(1.05); /* Slight scaling effect on hover */
+    transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+}
+
+#todo h1 {
+    margin: 0;
+    font-size: 1.5em; /* Adjust the size of the heading */
+}
+
+#todo p {
+    margin-top: 10px; /* Add spacing between the heading and the paragraph */
+    font-size: 1em; /* Adjust the size of the paragraph text */
+}
+
+    </style>
+</head>
+
+<body>
+    <!-- Container for Logout Message -->
+    <div class="container">
+        <div class="logout-box">
+            <h1>Hello, {{userName}}!</h1>
+            <div class="buttons">
+                <button id="back-to-home" type="button">Back to Home</button>
+                <button id="Logoutbtn" class="welcome" type="button">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Todos Section -->
+    <div class="main">
+        <div class="todo-container">
+        <button id="todo" type="button">your task is here</button>
+    </div>
+    </div>
+
+    <script>
+        // Navigation logic
+        document.getElementById('back-to-home').addEventListener('click', function() {
+            window.location.href = '/'; // Navigate to home page
+        });
+
+        document.getElementById('Logoutbtn').addEventListener('click', function() {
+            window.location.href = '/logout'; // Navigate to logout
+        });
+         document.getElementById('todo').addEventListener('click', function() {
+            window.location.href = '/todo'; // Navigate to logout
+        });
+    </script>
+</body>
+</html>
