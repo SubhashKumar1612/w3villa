@@ -30,12 +30,6 @@ const registrationSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-   
-    //new fileds
-    address: {
-        type: String
-    },
-    
     confirmPassword: {
         type: String,
         required: true
